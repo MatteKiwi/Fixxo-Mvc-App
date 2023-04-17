@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Fixxo_Web_Api.Models.DTO;
+using Fixxo_Web_Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fixxo_Web_Api.Controllers
@@ -11,58 +8,51 @@ namespace Fixxo_Web_Api.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        private readonly ProductRepository _productRepo;
+
+        public ProductsController(ProductRepository productRepo)
+        {
+            _productRepo = productRepo;
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(/*awit _productRepo.GetAllAsync();*/);
+            return Ok(await _productRepo.GetAllAsync());
         }
         
         [HttpGet("{articleNumber}")]
         public async Task<IActionResult> GetByArticleNumber(string articleNumber)
         {
-            /*var product = await _productRepo.GetByArticleNumberAsync(articleNumber);
-            if (product == null)
+            var product = await _productRepo.GetByArticleNumberAsync(articleNumber);
+            if (product != null)
             {
-                return NotFound();
+                return Ok(product);
             }
-            return Ok(product); */
-            return Ok();
+
+            return NotFound();
         }
         
         [HttpGet("tags/{tagName}")]
         public async Task<IActionResult> GetByTag(string tagName)
         {
-            /*var products = await _productRepo.GetByTagAsync(tagName);
-            if (products == null)
-            {
-                return NotFound();
-            }
-            return Ok(products); */
-            return Ok();
+            return Ok(await _productRepo.GetByTagAsync(tagName));
         }
         
-        [HttpGet("categories/{categoryName}")]
-        public async Task<IActionResult> GetByCategory(string categoryName)
-        {
-            /*var products = await _productRepo.GetByCategoryAsync(categoryName);
-            if (products == null)
-            {
-                return NotFound();
-            }
-            return Ok(products); */
-            return Ok();
-        }
         
         [HttpPost]
-        public async Task<IActionResult> Create(/*ProductHttpRequest product*/)
+        public async Task<IActionResult> Create(ProductHttpRequest request)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest();
+                var product = await _productRepo.CreateAsync(request);
+                if (product != null)
+                {
+                    return Created("", product);
+                }
             }
-            /*var product = await _productRepo.CreateAsync(product);
-            return Created("", product); */
-            return Ok();
+
+            return BadRequest();
         }
     
     }

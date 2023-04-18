@@ -10,4 +10,5 @@ public class DataContext : DbContext
     }
     
     public DbSet<ProductEntity> Products { get; set; }
+    public DbSet<ContactEntity> Contacts { get; set; }
 }

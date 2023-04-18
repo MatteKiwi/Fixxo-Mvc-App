@@ -25,12 +25,8 @@ namespace Fixxo_Web_Api.Controllers
         public async Task<IActionResult> GetByArticleNumber(string articleNumber)
         {
             var product = await _productRepo.GetByArticleNumberAsync(articleNumber);
-            if (product != null)
-            {
-                return Ok(product);
-            }
-
-            return NotFound();
+            return Ok(product);
+            
         }
         
         [HttpGet("tags/{tagName}")]
@@ -38,18 +34,14 @@ namespace Fixxo_Web_Api.Controllers
         {
             return Ok(await _productRepo.GetByTagAsync(tagName));
         }
-        
-        
+
         [HttpPost]
         public async Task<IActionResult> Create(ProductHttpRequest request)
         {
             if (ModelState.IsValid)
             {
                 var product = await _productRepo.CreateAsync(request);
-                if (product != null)
-                {
-                    return Created("", product);
-                }
+                return Created("", product);
             }
 
             return BadRequest();

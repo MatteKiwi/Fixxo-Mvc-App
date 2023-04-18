@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Fixxo_Web_Api.Models.DTO;
+using Fixxo_Web_Api.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,23 +9,45 @@ namespace Fixxo_Web_Api.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private SignInManager<IdentityUser> _signInManager;
-        private UserManager<IdentityUser> _userManager;
-        private RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly AuthService _authService;
 
-        public AuthenticationController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AuthenticationController(SignInManager<IdentityUser> signInManager, AuthService authService)
         {
             _signInManager = signInManager;
-            _userManager = userManager;
-            _roleManager = roleManager;
+            _authService = authService;
         }
 
-        public async Task<IActionResult> SignOut()
+        [Route("register")]
+        [HttpPost]
+        public async Task<IActionResult> Register(AuthenticationRegistrationModel model)
         {
-            if (_signInManager.IsSignedIn(User))
-                await _signInManager.SignOutAsync();
-            
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                if (await _authService.RegisterAsync(model))
+                {
+                    return Created("", null);
+                }
+            }
+
+            return BadRequest();
         }
+        
+        [Route("Login")]
+        [HttpPost]
+        public async Task<IActionResult> SignIn(AuthenticationLoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var token = await _authService.LoginAsync(model);
+                if (!string.IsNullOrEmpty(token))
+                {
+                    return Ok(token);
+                }
+            }
+
+            return Unauthorized("Invalid credentials");
+        }
+        
     }
 }

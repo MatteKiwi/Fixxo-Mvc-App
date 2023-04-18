@@ -15,6 +15,8 @@ public class AuthenticationRegistrationModel
     [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$")]
     public string Password { get; set; } = null!;
 
+    public string Role { get; set; } = "productManager";
+
     public static implicit operator IdentityUser(AuthenticationRegistrationModel model)
     {
         return new IdentityUser

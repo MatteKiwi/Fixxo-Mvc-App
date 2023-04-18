@@ -14,6 +14,7 @@ public class ProductEntity
     [Column(TypeName = "money")] 
     public decimal Price { get; set; }
 
+    public string? ImageUrl { get; set; }
     public string Tag { get; set; } = null!;
 
     public static implicit operator ProductHttpResponse(ProductEntity entity)
@@ -24,6 +25,7 @@ public class ProductEntity
             Name = entity.Name,
             Description = entity.Description,
             Price = entity.Price,
+            ImageUrl = entity.ImageUrl,
             Tag = entity.Tag
         };
     }

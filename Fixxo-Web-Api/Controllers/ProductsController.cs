@@ -38,13 +38,10 @@ namespace Fixxo_Web_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductHttpRequest request)
         {
-            if (ModelState.IsValid)
-            {
-                var product = await _productRepo.CreateAsync(request);
-                return Created("", product);
-            }
+            if (!ModelState.IsValid) return BadRequest();
+            var product = await _productRepo.CreateAsync(request);
+            return Created("", product);
 
-            return BadRequest();
         }
     
     }

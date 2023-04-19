@@ -22,7 +22,7 @@ public class AdminController : Controller
 
         ModelState.AddModelError("", "Invalid credentials" + response.StatusCode);
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "Account");
     }
     
     [HttpPost]

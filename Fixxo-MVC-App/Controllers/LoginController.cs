@@ -38,5 +38,4 @@ public class LoginController : Controller
         return View(viewModel);
 
     }
-
 }

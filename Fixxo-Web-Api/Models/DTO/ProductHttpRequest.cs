@@ -10,6 +10,7 @@ public class ProductHttpRequest
     public decimal Price { get; set; }
     public string? ImageUrl { get; set; }
     public string Tag { get; set; } = null!;
+    public int StarRating { get; set; }
 
     public static implicit operator ProductEntity(ProductHttpRequest request)
     {
@@ -20,7 +21,8 @@ public class ProductHttpRequest
             Description = request.Description,
             Price = request.Price,
             ImageUrl = request.ImageUrl,
-            Tag = request.Tag
+            Tag = request.Tag,
+            StarRating = request.StarRating
         };
     }
 }

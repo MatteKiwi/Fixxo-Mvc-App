@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fixxo_Web_Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230419100613_Initial")]
+    [Migration("20230419110417_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -66,6 +66,9 @@ namespace Fixxo_Web_Api.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
+
+                    b.Property<int>("StarRating")
+                        .HasColumnType("int");
 
                     b.Property<string>("Tag")
                         .IsRequired()

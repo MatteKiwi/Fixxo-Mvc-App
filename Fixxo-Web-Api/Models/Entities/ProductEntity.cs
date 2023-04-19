@@ -16,6 +16,8 @@ public class ProductEntity
     public string? ImageUrl { get; set; }
     public string Tag { get; set; } = null!;
 
+    public int StarRating { get; set; }
+
     public static implicit operator ProductHttpResponse(ProductEntity entity)
     {
         return new ProductHttpResponse
@@ -25,7 +27,8 @@ public class ProductEntity
             Description = entity.Description,
             Price = entity.Price,
             ImageUrl = entity.ImageUrl,
-            Tag = entity.Tag
+            Tag = entity.Tag,
+            StarRating = entity.StarRating
         };
     }
 }

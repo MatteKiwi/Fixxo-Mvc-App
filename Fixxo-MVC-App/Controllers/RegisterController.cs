@@ -13,6 +13,7 @@ public class RegisterController : Controller
     }
     
     [HttpPost]
+    [Route("Register")]
     public async Task<IActionResult> Index(RegisterViewModel viewModel)
     {
         if (ModelState.IsValid)

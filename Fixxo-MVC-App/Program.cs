@@ -1,6 +1,9 @@
+using Fixxo_MVC_App.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 app.UseHsts();

@@ -38,11 +38,11 @@ public class AdminController : Controller
             var response = await httpClient.PostAsJsonAsync("https://localhost:7084/api/Products", model);
             if (response.StatusCode == HttpStatusCode.Created)
             {
-                return View(model);
+                return View();
             }
 
             ModelState.AddModelError("", "Invalid credentials" + response.StatusCode);
         }
-        return View(model);
+        return View();
     }
 }

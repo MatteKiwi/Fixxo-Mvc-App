@@ -1,0 +1,32 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Fixxo_MVC_App.Models.ProductModel>
+<div class="container">
+    <form method="get" asp-action="Index" class="mb-3">
+      <div class="input-group">
+        <label for="sort" class="input-group-text">Sort by:</label>
+        <select id="sort" name="sort" class="form-select">
+          <option value="featured">Featured</option>
+          <option value="new">New</option>
+          <option value="popular">Popular</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Sort</button>
+      </div>
+    </form>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="card-text">@product.StarRating</p>    
+                        <p class="card-text">$@product.Price</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

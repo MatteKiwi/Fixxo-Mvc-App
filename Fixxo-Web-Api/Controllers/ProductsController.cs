@@ -1,11 +1,14 @@
+using Fixxo_Web_Api.Filters;
 using Fixxo_Web_Api.Models.DTO;
 using Fixxo_Web_Api.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fixxo_Web_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [UseApiKey]
     public class ProductsController : ControllerBase
     {
         private readonly ProductRepository _productRepo;
@@ -34,7 +37,8 @@ namespace Fixxo_Web_Api.Controllers
         {
             return Ok(await _productRepo.GetByTagAsync(tagName));
         }
-
+        
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(ProductHttpRequest request)
         {

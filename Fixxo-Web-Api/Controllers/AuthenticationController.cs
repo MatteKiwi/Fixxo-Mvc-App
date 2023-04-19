@@ -1,5 +1,7 @@
+using Fixxo_Web_Api.Filters;
 using Fixxo_Web_Api.Models.DTO;
 using Fixxo_Web_Api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +9,7 @@ namespace Fixxo_Web_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [UseApiKey]
     public class AuthenticationController : ControllerBase
     {
         private readonly SignInManager<IdentityUser> _signInManager;

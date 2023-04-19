@@ -25,6 +25,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<UserProfileRepository>();
+builder.Services.AddScoped<ContactRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<RoleService>();
 builder.Services.AddScoped<TokenGenerator>();

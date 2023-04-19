@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
 
-html, body {
+html,
+body {
     font-size: 1em;
     font-weight: 400;
     font-family: "Poppins", sans-serif;
@@ -11,14 +12,6 @@ html, body {
 
 .hide {
     display: none;
-}
-
-@media (min-width: 992px) {
-    .links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }
 
 .links .link {
@@ -81,8 +74,8 @@ button {
     content: "";
     border-top: 2px solid #f5f5f5;
     border-left: 2px solid #f5f5f5;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     position: absolute;
     top: 12px;
     left: 12px;
@@ -92,8 +85,8 @@ button {
     content: "";
     border-bottom: 2px solid #f5f5f5;
     border-right: 2px solid #f5f5f5;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     position: absolute;
     bottom: 12px;
     right: 12px;
@@ -164,7 +157,6 @@ header #logotype {
 
 header #menu {
     grid-area: menu;
-
 }
 
 @media (min-width: 992px) {
@@ -179,8 +171,15 @@ header #menu .menu-links {
     grid-area: menulinks;
 }
 
+@media (min-width: 992px) {
+    header #menu .menu-links {
+        text-align: center;
+    }
+}
+
 header #menu .menu-icons {
     grid-area: menuicons;
+    text-align: center;
     margin-top: 40px;
 }
 
@@ -237,7 +236,6 @@ header .icons .link {
 }
 
 @media (min-width: 992px) {
-
     header .icons {
         justify-content: flex-end;
     }
@@ -357,7 +355,6 @@ header .icons .link {
 }
 
 .collection-grid .item-collection {
-    margin-bottom: 40px;
     display: grid;
     gap: 30px;
     grid-template-columns: 1fr;
@@ -452,7 +449,7 @@ header .icons .link {
     color: #222529;
     font-weight: 700;
     font-size: 1.4em;
-    min-height: 50px;
+    min-height: 70px;
 }
 
 @media (min-width: 992px) {
@@ -463,23 +460,20 @@ header .icons .link {
 }
 
 .collection-grid .item-collection .item .body-section .star-rating {
-    margin-top: 0.3rem;
-    font-size: 1.5em;
+    margin-top: 1rem;
+    font-size: 1.8em;
 }
 
 .collection-grid .item-collection .item .body-section .price {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
-    font-weight: 500;
-    font-size: 1.3em;
+    font-weight: 700;
+    font-size: 1.8em;
 }
 
 @media (min-width: 992px) {
-    .hide{
-
-    }
     .collection-grid .item-collection .item .body-section .price {
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 }
 
@@ -562,4 +556,183 @@ header .icons .link {
 
 .offer-grid .offer .content button {
     margin-top: 20px;
+}
+
+.collection-twocolumns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.collection-twocolumns .bg-gray {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.collection-twocolumns .column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collection-twocolumns .column .content {
+    text-align: center;
+}
+
+.collection-twocolumns .column .content h1 {
+    font-weight: 700;
+}
+
+.collection-twocolumns .column.item-collection {
+    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+
+
+.collection-twocolumns .title {
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.collection-twocolumns .item-collection {
+    margin-bottom: 40px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .collection-twocolumns .item-collection {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .collection-twocolumns .item-collection {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1400px) {
+    .collection-twocolumns .item-collection {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .collection-twocolumns .item-collection .item .image-section .menu {
+        display: none;
+    }
+
+    .collection-twocolumns .item-collection .item:hover .image-section .menu {
+        display: block;
+    }
+}
+
+.collection-twocolumns .item-collection .item .image-section {
+    position: relative;
+}
+
+.collection-twocolumns .item-collection .item .image-section img {
+    width: 100%;
+    height: auto;
+}
+
+.collection-twocolumns .item-collection .item .image-section .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.collection-twocolumns .item-collection .item .image-section .menu .icons {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.collection-twocolumns .item-collection .item .image-section .menu .icons .link {
+    margin: 15px;
+    height: 50px;
+    width: 50px;
+    font-size: 1.4em;
+}
+
+@media (min-width: 992px) {
+    .collection-twocolumns .item-collection .item .image-section .menu .icons .link {
+        height: 36px;
+        width: 36px;
+        font-size: 1em;
+    }
+}
+
+.collection-twocolumns .item-collection .item .image-section .menu .btn-theme {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.collection-twocolumns .item-collection .item .body-section {
+    text-align: center;
+}
+
+.collection-twocolumns .item-collection .item .body-section .category {
+    margin-top: 1rem;
+    color: #616365;
+    font-weight: 500;
+}
+
+.collection-twocolumns .item-collection .item .body-section .name {
+    margin-top: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #222529;
+    font-weight: 700;
+    font-size: 1.4em;
+    min-height: 50px;
+}
+
+@media (min-width: 992px) {
+    .collection-twocolumns .item-collection .item .body-section .name {
+        font-size: 1.2em;
+        min-height: 60px;
+    }
+}
+
+.collection-twocolumns .item-collection .item .body-section .star-rating {
+    margin-top: 0.3rem;
+    font-size: 1.5em;
+}
+
+.collection-twocolumns .item-collection .item .body-section .price {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+@media (min-width: 992px) {
+    .collection-twocolumns .item-collection .item .body-section .price {
+        font-size: 1.2em;
+    }
+}
+
+footer {
+    font-family: "Poppins",sans-serif;
+    padding: 30px;
+    background-color: #292929;
+    color: #aeaeae
+}
+
+footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center
 }

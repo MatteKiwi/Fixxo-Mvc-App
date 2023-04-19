@@ -1,3 +1,4 @@
+using System.Net;
 using Fixxo_MVC_App.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,11 +22,17 @@ public class RegisterController : Controller
 
             var response = await httpClient.PostAsJsonAsync("https://localhost:7084/api/Authentication/register", viewModel);
             
-            return RedirectToAction("Index", "Login");
+            if (response.StatusCode == HttpStatusCode.Created)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid credentials" + response.StatusCode);
+            }
+            
         }
-
-        ModelState.AddModelError("", "Invalid credentials");
-
+        
         return View(viewModel);
 
     }

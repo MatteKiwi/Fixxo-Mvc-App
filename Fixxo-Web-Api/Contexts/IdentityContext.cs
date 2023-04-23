@@ -10,6 +10,5 @@ public class IdentityContext : IdentityDbContext<IdentityUser>
     public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
     {
     }
-    
     public DbSet<UserProfileEntity> UserProfiles { get; set; }
 }

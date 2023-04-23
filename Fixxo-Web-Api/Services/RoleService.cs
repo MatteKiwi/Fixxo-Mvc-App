@@ -16,9 +16,9 @@ public class RoleService
     {
         if (!await _roleManager.Roles.AnyAsync())
         {
-            IdentityRole adminRole = new IdentityRole("admin");
+            var adminRole = new IdentityRole("admin");
             await _roleManager.CreateAsync(adminRole);
-            IdentityRole productManagerRole = new IdentityRole("productManager");
+            var productManagerRole = new IdentityRole("productManager");
             await _roleManager.CreateAsync(productManagerRole);
             return false;
         }

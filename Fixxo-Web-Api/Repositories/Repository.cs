@@ -30,9 +30,6 @@ public abstract class Repository<TEntity> where TEntity : class
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
         {
             var entity = await _identityContext.Set<TEntity>().FirstOrDefaultAsync(predicate);
-            if (entity != null)
-                return entity;
-
-            return null!;
+            return entity ?? null!;
         }
 }

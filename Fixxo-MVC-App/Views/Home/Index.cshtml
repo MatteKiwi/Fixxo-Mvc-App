@@ -1,8 +1,22 @@
-@{
-	ViewData["CollectionTitle"] = "Featured Products";
-}
+@model Fixxo_MVC_App.ViewModels.HomeViewModel;
 
 <partial name="Partials/_ShowcasePartial"/>
-<partial name="Partials/_CollectionPartial"/>
+
+@{
+    ViewData["CollectionTitle"] = "Featured Products";
+}
+<partial name="Partials/_CollectionPartial" model="Model.FeaturedProducts"/>
+
+@{
+    ViewData["CollectionTitle"] = "New Products";
+}
+<partial name="Partials/_CollectionPartial" model="Model.NewProducts"/>
+
+@{
+    ViewData["CollectionTitle"] = "Popular Products";
+}
+<partial name="Partials/_CollectionPartial" model="Model.PopularProducts"/>
+
 <partial name="Partials/_SpecialOffersPartial"/>
-<partial name="Partials/_TwoColumnCollectionPartial"/>
+<partial name="Partials/_TwoColumnCollectionPartial" model="Model.NewProducts"/>
+

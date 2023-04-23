@@ -47,6 +47,5 @@ namespace Fixxo_Web_Api.Controllers
             return Created("", product);
 
         }
-    
     }
 }

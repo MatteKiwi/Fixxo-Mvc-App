@@ -1,7 +1,15 @@
+@model int
+
 <div class="star-rating">
-    <i class="fa-sharp fa-star fa-solid"></i>
-    <i class="fa-sharp fa-star fa-solid"></i>
-    <i class="fa-sharp fa-star fa-solid"></i>
-    <i class="fa-sharp fa-star fa-regular"></i>
-    <i class="fa-sharp fa-star fa-regular"></i>
+    @for (var i = 0; i < 5; i++)
+    {
+        if (Model > i)
+        {
+            <i class="fa-sharp fa-star fa-solid"></i> 
+        }
+        else
+        {
+            <i class="fa-sharp fa-star fa-regular"></i>
+        }
+    }
 </div>

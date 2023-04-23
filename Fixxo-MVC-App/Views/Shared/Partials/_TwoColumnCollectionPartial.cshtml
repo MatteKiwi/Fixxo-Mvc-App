@@ -1,3 +1,5 @@
+@model IEnumerable<Fixxo_MVC_App.Models.CollectionItemModel>
+
 <section class="collection-twocolumns">
     <div class="column bg-gray">
         <div class="content">
@@ -6,23 +8,18 @@
         </div>
     </div>
     <div class="column item-collection">
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
+        	@foreach(var product in Model)
+	        {
+	            <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" model="product"/>
+	        }
     </div>
 </section>
-
 <section class="collection-twocolumns">
     <div class="column item-collection">
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-        <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
+        @foreach(var product in Model)
+        {
+            <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" model="product"/>
+        }
     </div>
     <div class="column bg-gray">
         <div class="content">

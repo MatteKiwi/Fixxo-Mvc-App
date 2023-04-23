@@ -1,0 +1,16 @@
+@model Fixxo_MVC_App.Models.ProductModel
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.Name">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">@Model.Description</p>
+                <div class="d-flex justify-content-between">
+                    <p class="card-text">@Model.Price.ToString("C")</p>
+                    <a class="btn btn-primary">ADD TO CART</a>
+                </div>
+        </div>
+    </div>
+</div>
+

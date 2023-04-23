@@ -65,7 +65,7 @@ public class AuthService
             if (signInResult.Succeeded)
             {
                 var role = await _userManager.GetRolesAsync(identityUser);
-                string roleName = role.FirstOrDefault();
+                string roleName = role.FirstOrDefault()!;
                 var claims = new ClaimsIdentity(new Claim[]
                 {
                     new Claim("id", identityUser.Id.ToString()),

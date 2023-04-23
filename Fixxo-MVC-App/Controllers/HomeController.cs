@@ -1,4 +1,5 @@
 using Fixxo_MVC_App.Services;
+using Fixxo_MVC_App.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fixxo_MVC_App.Controllers
@@ -14,8 +15,17 @@ namespace Fixxo_MVC_App.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var products = await _productService.GetByTagAsync("featured");
-            return View();
+           // var products = await _productService.GetByTagAsync("featured");
+
+            HomeViewModel homeViewModel = new HomeViewModel
+            {
+                FeaturedProducts = await _productService.GetByTagAsync("featured"),
+                NewProducts = await _productService.GetByTagAsync("new"),
+                PopularProducts = await _productService.GetByTagAsync("popular")
+            };
+
+
+            return View(homeViewModel);
         }
         
     }

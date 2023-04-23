@@ -1,7 +1,8 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model IEnumerable<Fixxo_MVC_App.Models.ProductModel>
+@model IEnumerable<Fixxo_MVC_App.Models.CollectionItemModel>
+
 <div class="container">
-    <form method="get" asp-action="Index" class="mb-3">
+    <form method="get" asp-action="Index" asp-controller="Products" class="mb-3">
       <div class="input-group">
         <label for="sort" class="input-group-text">Sort by:</label>
         <select id="sort" name="sort" class="form-select">
@@ -22,7 +23,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@product.Name</h5>
                         <p class="card-text">@product.Description</p>
-                        <p class="card-text">@product.StarRating</p>    
+                        <p class="card-text"><partial name="~/Views/Shared/Partials/_StarRatingPartial.cshtml" model="@product.StarRating"/></p>    
                         <p class="card-text">$@product.Price</p>
                     </div>
                 </div>

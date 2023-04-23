@@ -1,5 +1,6 @@
 using Fixxo_MVC_App.Models;
 using Fixxo_MVC_App.Services;
+using Fixxo_MVC_App.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fixxo_MVC_App.Controllers
@@ -13,9 +14,10 @@ namespace Fixxo_MVC_App.Controllers
             _productService = productService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index(string sort)
         {
-            IEnumerable<ProductModel> products;
+            IEnumerable<CollectionItemModel> products;
     
             switch (sort)
             {
@@ -34,6 +36,15 @@ namespace Fixxo_MVC_App.Controllers
             }
     
             return View(products);
+        }
+        
+        [HttpGet("{articleNumber}")]
+        
+        public async Task<IActionResult> Details(string articleNumber)
+        {
+            var product = await _productService.GetByArticleNumberAsync(articleNumber);
+
+            return View(product);
         }
         
     }

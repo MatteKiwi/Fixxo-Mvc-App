@@ -1,6 +1,8 @@
+@model Fixxo_MVC_App.Models.CollectionItemModel
+
 <div class="item">
 	<div class="image-section">
-		<img src="~/images/black_coat.png" alt="" />
+		<img src="@Model.ImageUrl" class="img-fluid" alt="" width="250" height="200"/>
 		<div class="menu">
 			<div class="icons">
 				<button class="link">
@@ -13,13 +15,13 @@
 					<i class="fa-regular fa-bag-shopping"></i>
 				</button>
 			</div>
-			<a class="btn-theme">QUICK VIEW</a>
+			<a class="btn-theme" asp-controller="Products" asp-action="Details" asp-route-articleNumber="@Model.ArticleNumber">QUICK VIEW</a>
 		</div>
 	</div>
 	<div class="body-section">
-		<div class="category">Coats</div>
-		<div class="name">Black Long Coat of the Best Brand and Design</div>
-		<partial name="~/Views/Shared/Partials/_StarRatingPartial.cshtml" />
-		<div class="price">$3500</div>
+		<div class="category">@Model.Description</div>
+		<div class="name">@Model.Name</div>
+		<partial name="~/Views/Shared/Partials/_StarRatingPartial.cshtml" model="Model.StarRating" />
+		<div class="price">$@Model.Price</div>
 	</div>
 </div>

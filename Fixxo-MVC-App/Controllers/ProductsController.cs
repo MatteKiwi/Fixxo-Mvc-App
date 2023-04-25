@@ -38,7 +38,7 @@ namespace Fixxo_MVC_App.Controllers
             return View(products);
         }
         
-        [HttpGet("{articleNumber}")]
+        [HttpGet("product/{articleNumber}")]
         
         public async Task<IActionResult> Details(string articleNumber)
         {

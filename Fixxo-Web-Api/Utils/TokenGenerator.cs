@@ -24,7 +24,7 @@ public class TokenGenerator
             Subject = claimsIdentity,
             Expires = expiresAt,
             SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("TokenValidation").GetValue<string>("SecretKey")!)), SecurityAlgorithms.HmacSha512Signature)
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Tokenvalidation").GetValue<string>("SecretKey")!)), SecurityAlgorithms.HmacSha512Signature)
         };
 
         return tokenHandler.WriteToken(tokenHandler.CreateToken(securityTokenDescriptor));
